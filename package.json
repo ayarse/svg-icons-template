@@ -1,0 +1,27 @@
+{
+  "name": "svg-icons-template",
+  "version": "1.0.1",
+  "description": "Template to create custom React icons packages from SVGs",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "node ./scripts/prebuild.cjs",
+    "build:icons": "svgr --config-file svgr.config.js --out-dir src/ -- svg",
+    "build:ts": "tsc",
+    "build": "npm run prebuild && npm run build:icons && npm run build:ts",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^8.0.0",
+    "@types/react": "^18.0.28",
+    "typescript": "^5.7.0",
+    "react": "^18.2.0"
+  }
+}
